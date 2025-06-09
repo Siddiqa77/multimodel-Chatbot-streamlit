@@ -1,0 +1,9 @@
+echo "__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+env/
+venv/
+*.env
+.uv/
+" > .gitignore
