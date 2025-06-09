@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 st.set_page_config(page_title="Multi-Model Chatbot", layout="centered")
 
 # --- API Key Loading ---
-# Load API key from Streamlit secrets or .env
+# Load API key from  .env
 API_KEY = None
 try:
     API_KEY = st.secrets["OPENROUTER_API_KEY"]
@@ -19,7 +19,7 @@ except Exception:
 # Validate API key
 if not API_KEY:
     st.error("🚨 Missing API Key. Please set OPENROUTER_API_KEY in your .env file or Streamlit secrets.")
-    st.stop() # Stop the app if no API key is found
+    st.stop() 
 
 # --- Supported Models ---
 MODELS = {
@@ -75,6 +75,7 @@ with st.sidebar:
     
     st.markdown("---")
     st.caption("Powered by [OpenRouter](https://openrouter.ai)")
+    st.caption("Created  by Siddiqa Badar with ❤️")
 
 # --- Theme Configuration (applying custom CSS once) ---
 # This CSS primarily affects the overall page background and text color.
@@ -82,18 +83,42 @@ with st.sidebar:
 bg_color = "#1e1e1e" if dark_mode else "#ffffff"
 text_color = "white" if dark_mode else "black"
 
-st.markdown(f"""
-    <style>
-        body {{
-            background-color: {bg_color};
-            color: {text_color};
-        }}
-        .stChatMessage {{ /* This targets Streamlit's default chat message container */
-            color: {text_color}; 
-        }}
-        /* Further custom styles for specific elements if needed, though st.chat_message is well-styled */
-    </style>
-""", unsafe_allow_html=True)
+# st.markdown(f"""
+#     <style>
+#         body {{
+#             background-color: {bg_color};
+#             color: {text_color};
+#         }}
+#         .stChatMessage {{ /* This targets Streamlit's default chat message container */
+#             color: {text_color}; 
+#         }}
+#         /* Further custom styles for specific elements if needed, though st.chat_message is well-styled */
+#     </style>
+# """, unsafe_allow_html=True)
+if dark_mode:
+    st.markdown("""
+        <style>
+            body, .stApp {
+                background-color: #121212;
+                color: white;
+            }
+            .block-container {
+                background-color: #121212;
+                color: white;
+            }
+            .stChatMessage, .stTextInput > div > div > input, .stTextArea textarea {
+                background-color: #1e1e1e !important;
+                color: white !important;
+                border: 1px solid #333333 !important;
+            }
+            .stSelectbox, .stCheckbox, .stMarkdown, .stCaption, .stButton {
+                color: white !important;
+            }
+            .stSidebar {
+                background-color: #1e1e1e !important;
+            }
+        </style>
+    """, unsafe_allow_html=True)
 
 
 # --- Main Chat Interface ---
