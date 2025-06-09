@@ -21,8 +21,6 @@ if not API_KEY:
     st.error("🚨 Missing API Key. Please set OPENROUTER_API_KEY in your .env file or Streamlit secrets.")
     st.stop() # Stop the app if no API key is found
 
-
-
 # --- Supported Models ---
 MODELS = {
     "LLaMA 3 (8B)": "meta-llama/llama-3-8b-instruct",
