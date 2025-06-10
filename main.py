@@ -44,7 +44,7 @@ def query_openrouter(model_id: str, messages: list) -> str:
     Returns:
         str: The content of the assistant's reply or an error message.
     """
-    url = "https://openrouter.ai/api/v1/chat/completions"
+    url = " https://openrouter.ai/api/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {API_KEY}",
         "Content-Type": "application/json",
